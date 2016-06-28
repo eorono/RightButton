@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 
 import layout.MyService;
+
+import static android.support.v4.view.MotionEventCompat.getButtonState;
 
 public class MainActivity extends Activity {
 
@@ -19,12 +22,15 @@ public class MainActivity extends Activity {
         findViewById(R.id.buttonOff).setOnClickListener(mClickListener);
     }
 
+    private void getButtonState() {
+    }
+
     View.OnClickListener mClickListener = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.buttonOn:
+                case MotionEvent.BUTTON_SECONDARY:
                     // Start Service
                     startService(new Intent(MainActivity.this, MyService.class));
                     break;
